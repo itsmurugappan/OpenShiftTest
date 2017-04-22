@@ -20,31 +20,7 @@ public class TestController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String helloWorld()
     {
-        String DATASOURCE_CONTEXT = "java:jboss/datasources/ExampleDS";
-
-        Connection result = null;
-        try {
-            Context initialContext = new InitialContext();
-            if ( initialContext == null){
-                System.out.println("JNDI problem. Cannot get InitialContext.");
-            }
-            DataSource datasource = (DataSource)initialContext.lookup(DATASOURCE_CONTEXT);
-            if (datasource != null) {
-                result = datasource.getConnection();
-                System.out.println("connection + " + result);
-                return "success" ;
-            }
-            else {
-                System.out.println("Failed to lookup datasource.");
-            }
-        }
-        catch ( NamingException ex ) {
-            System.out.println("Cannot get connection: " + ex);
-        }
-        catch(SQLException ex){
-            System.out.println("Cannot get connection: " + ex);
-        }
-        return "hello world";
+        return "success";
     }
 
 }
